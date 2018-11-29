@@ -8,6 +8,19 @@
   <name>SpringExample</name>
   <!--url>http://maven.apache.org</url-->
 
+  <distributionManagement>
+    <repository>
+      <id>maven-spring-releases</id>
+      <name>maven-spring-releases</name>
+      <url>http://ec2-18-221-177-167.us-east-2.compute.amazonaws.com:8081/nexus/content/repositories/maven-spring-releases/</url>
+    </repository>
+    <snapshotRepository>
+      <id>maven-spring-snapshots</id>
+      <name>maven-spring-snapshots</name>
+      <url>http://ec2-18-221-177-167.us-east-2.compute.amazonaws.com:8081/nexus/content/repositories/maven-spring-snapshots/</url>
+    </snapshotRepository>
+  </distributionManagement>
+
   <repositories>
     <repository>
       <id>my-repo2</id>
@@ -20,6 +33,7 @@
       <url>http://maven.apache.org</url>
     </repository>
  </repositories>  
+	
   <dependencies>
     <dependency>
       <groupId>junit</groupId>
@@ -35,21 +49,49 @@
 		<version>2.5.6</version>
 	</dependency> 
   </dependencies>
+	
+<build>
+		<sourceDirectory>src/main/java</sourceDirectory>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.1</version>
+				<configuration>
+					<source>1.7</source>
+					<target>1.7</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>cobertura-maven-plugin</artifactId>
+				<version>2.7</version>
+				<configuration>
+					<formats>
+						<format>html</format>
+						<format>xml</format>
+					</formats>
+					<check />
+				</configuration>
+			</plugin>
+		</plugins>
+</build>
+	
 <profiles>
-<profile>
-     <id>spring-deploy</id>
- <distributionManagement>
-    <repository>
-      <id>spring-releases</id>
-      <name>spring-releases</name>
-      <url>http://ip-172-31-23-20.ap-south-1.compute.internal:8081/nexus/content/repositories/spring-releases/</url>
-    </repository>
-    <snapshotRepository>
-      <id>spring-snapshots</id>
-      <name>spring-snapshots</name>
-      <url>http://ip-172-31-23-20.ap-south-1.compute.internal:8081/nexus/content/repositories/spring-snapshots/</url>
-    </snapshotRepository>
-  </distributionManagement>
-</profile>
+	<profile>
+	     <id>spring-deploy</id>
+	 <distributionManagement>
+	    <repository>
+	      <id>spring-releases</id>
+	      <name>spring-releases</name>
+	      <url>http://ip-172-31-23-20.ap-south-1.compute.internal:8081/nexus/content/repositories/spring-releases/</url>
+	    </repository>
+	    <snapshotRepository>
+	      <id>spring-snapshots</id>
+	      <name>spring-snapshots</name>
+	      <url>http://ip-172-31-23-20.ap-south-1.compute.internal:8081/nexus/content/repositories/spring-snapshots/</url>
+	    </snapshotRepository>
+	  </distributionManagement>
+	</profile>
   </profiles>
 </project>
