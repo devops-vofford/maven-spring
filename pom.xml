@@ -20,19 +20,6 @@
       <url>http://ec2-18-221-177-167.us-east-2.compute.amazonaws.com:8081/nexus/content/repositories/maven-spring-snapshots/</url>
     </snapshotRepository>
   </distributionManagement>
-
-  <repositories>
-    <repository>
-      <id>my-repo2</id>
-      <name>public</name>
-      <url>http://ip-172-31-23-20.ap-south-1.compute.internal:8081/nexus/content/groups/public/</url>
-    </repository>
-    <repository>
-      <id>my-repo1</id>
-      <name>your custom repo</name>
-      <url>http://maven.apache.org</url>
-    </repository>
- </repositories>  
 	
   <dependencies>
     <dependency>
